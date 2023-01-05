@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <title>tiphub.net</title>
+</head>
+<body>
+    <h1>Welcome Tiphub</h1>
+    <hr>
+    <ul>
+        {% for post in posts %}
+        <article>
+            <a href="details/{{post.slug}}"><h2>{{post.title}}</h2></a>
+            <div>{{post.author}}</div>
+            <div>{{post.created}}</div>
+            <p>{{post.conttent}}</p>
+        </article>
+        <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>

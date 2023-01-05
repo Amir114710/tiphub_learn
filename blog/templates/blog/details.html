@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static "js/jquery.min.js" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <script src="https://kit.fontawesome.com/1cd78581a0.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{posts.title}}</title>
+</head>
+<body>
+    <article>
+        <h2>{{posts.title}}</h2>
+        <div>{{posts.author}}</div>
+        <div>{{posts.created}}</div>
+        <p>{{posts.conttent}}</p>
+        <!-- {% if request.user.is_authenticated %}
+            {% if is_liked %}
+            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-solid fa-heart"><span id="count">{{posts.likes.count}}</span></i></a>
+            {% else %}
+            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-regular fa-heart"><span id="count">{{posts.likes.count}}</span></i></a>
+            {% endif %}
+        {% endif %} -->
+        {% if request.user.is_authenticated == True %}
+        <div>  
+            {% if is_liked %}
+            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-solid fa-heart"><span id="count">{{posts.likes.count}}</span></i></a>                                   
+            {% else %}
+            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-regular fa-heart"><span id="count">{{posts.likes.count}}</span></i></a></a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </article>
+</body>
+</html>
