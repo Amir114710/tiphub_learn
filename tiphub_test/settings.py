@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps:
     'blog',
+    #my packages: 
+    'django_social_share',
 ]
 
 MIDDLEWARE = [

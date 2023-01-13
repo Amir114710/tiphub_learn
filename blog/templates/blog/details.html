@@ -1,4 +1,5 @@
 {% load static %}
+{% load social_share %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +18,6 @@
         <div>{{posts.author}}</div>
         <div>{{posts.created}}</div>
         <p>{{posts.conttent}}</p>
-        <!-- {% if request.user.is_authenticated %}
-            {% if is_liked %}
-            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-solid fa-heart"><span id="count">{{posts.likes.count}}</span></i></a>
-            {% else %}
-            <a href="{% url 'blog:like' posts.slug posts.id %}"><i id="like" style="color:red" class="fa-regular fa-heart"><span id="count">{{posts.likes.count}}</span></i></a>
-            {% endif %}
-        {% endif %} -->
         {% if request.user.is_authenticated == True %}
         <div>  
             {% if is_liked %}
@@ -34,5 +28,10 @@
         </div>
         {% endif %}
     </article>
+    <div class="share">
+        <span>{% post_to_whatsapp posts.get_absolute_url  'Whatsapp' %}</span>
+        <span class="post-share">{% post_to_telegram 'plese see the new post in the site' posts.get_absolute_url 'telegram' %}</span>
+        <span class="post-share">{% send_email 'plese see the new post in the site'  posts.get_absolute_url  'email' %}</span>
+    </div>
 </body>
 </html>

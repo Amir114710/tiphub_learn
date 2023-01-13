@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils.text import slugify
 
 class Post(models.Model):
@@ -16,6 +17,9 @@ class Post(models.Model):
         self.slug = slugify(self.title)
         super(Post , self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('blog:details' , kwargs={'slug':self.slug})
+        
 class Like(models.Model):
     users = models.ForeignKey(User, related_name='likes' , on_delete=models.CASCADE)
     posts = models.ForeignKey(Post, related_name='likes' , on_delete=models.CASCADE)
