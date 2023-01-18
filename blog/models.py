@@ -8,6 +8,7 @@ class Post(models.Model):
     slug = models.SlugField(blank=True)
     conttent = models.TextField()
     author = models.ForeignKey(User , on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='blog' , null=True , blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

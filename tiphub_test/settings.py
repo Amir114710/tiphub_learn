@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     #my packages: 
     'django_social_share',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
